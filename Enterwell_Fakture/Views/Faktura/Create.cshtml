@@ -45,33 +45,74 @@
                 @Html.ValidationMessageFor(model => model.Prodavac, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div>
+        <div class="table-responsive form-group">
             <label class = "control-label col-md-2" >Stavke :</label>
-            <ul style="list-style-type: none">
-                <li> Opis | Cijena | Kolicina | Ukupno</li>
-                @if (Model.Stavke.Count != 0)
-                {
-                    foreach (var stavka in Model.Stavke)
+            <table class="table table-bordered table-striped table-highlight col-md-7">
+                <thead>
+                    <tr>
+                        <td>
+                            Opis
+                        </td>
+                        <td>
+                            Cijena
+                        </td>
+                        <td>
+                            Kolicina
+                        </td>
+                        <td>
+                            Ukupno
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Stavke.Count != 0)
                     {
-                        <li>@stavka.Opis | @stavka.Cijena.ToString("C2") | @stavka.Kolicina.ToString("#.##") | @stavka.UkupnaCijena().ToString("C2") </li>
+                        foreach (var stavka in Model.Stavke)
+                        {
+                        <tr>
+                            <td>
+                                @stavka.Opis
+                            </td>
+                            <td>
+                                @stavka.Cijena.ToString("C2")
+                            </td>
+                            <td>
+                                @stavka.Kolicina.ToString("#.##")
+                            </td>
+                            <td>
+                                @stavka.UkupnaCijena().ToString("C2")
+                            </td>
+                        </tr>
+                        }
                     }
-                }
-                else
-                {
-                   <li>Nema dodanih stavki</li>
-                }
-            </ul>
+                    else
+                    {
+                       <tr>
+                            <td colspan="4">Nema dodadnih stavki</td>
+                       </tr>
+                    }
+                    <tr>
+                        <td>
+                            <input type="text" name="Opis" />
+                        </td>
+                        <td>
+                            <input type="text" name="Cijena" />
+                        </td>
+                        <td>
+                            <input type="text" name="Kolicina" />
+                        </td>
+                        <td>
+                            <input type="submit" name="btn" value="Dodaj stavku +" class="btn btn-default" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <a class="btn btn-warning" href="~/Faktura/StavkaCreate"> Dodaj Stavku + </a>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Kreiraj fakturu" class="btn btn-default" />
+                <input type="submit" name="btn" value="Kreiraj fakturu" class="btn btn-default" />
             </div>
         </div>
     </div>

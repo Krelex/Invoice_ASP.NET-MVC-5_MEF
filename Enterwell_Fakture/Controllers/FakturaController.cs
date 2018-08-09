@@ -25,5 +25,20 @@ namespace Enterwell_Fakture.Controllers
         {
             return View( new  Faktura() );
         }
+
+        [HttpPost]
+        public ActionResult Create(Faktura faktura , Stavka stavka,  string btn )
+        {
+            if (btn != null)
+            {
+                faktura.Stavke.Add(stavka);
+                return View("Create" , faktura);
+            }
+            else
+            {
+                return RedirectToAction("index");
+
+            }
+        }
     }
 }
