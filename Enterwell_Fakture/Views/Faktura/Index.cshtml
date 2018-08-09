@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Enterwell_Fakture.Models.Faktura>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Datum izdavanja
+        </th>
+        <th>
+            Datum dospijeca
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kupac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prodavac)
+        </th>
+        <th class="text-center">Stavke</th>
+        <th>Cijena bez PDV-a</th>
+        <th>Cijena sa PDV-om</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.CreateDate.ToShortDateString()
+        </td>
+        <td>
+            @item.PayDate.ToShortDateString()
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kupac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prodavac)
+        </td>
+        <td>
+            <table class="table-bordered">
+                <thead>
+                    <tr>
+                        <td>
+                            Opis
+                        </td>
+                        <td>
+                            Kolicina
+                        </td>
+                        <td>
+                            Cijena kom.
+                        </td>
+                        <td>
+                            Ukupna cijena
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var stavka in item.Stavke)
+                    {
+                        <tr>
+                            <td>
+                                @stavka.Opis
+                            </td>
+                            <td>
+                                @stavka.Kolicina.ToString("#.##")
+                            <td>
+                                @stavka.Cijena.ToString("C2")
+                            </td>
+                            <td>
+                                @stavka.UkupnaCijena().ToString("C2")
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </td>
+        <td>
+            @item.CijenaBezPdv().ToString("C2")
+        </td>
+        <td>
+
+        </td>
+    </tr>
+}
+
+</table>
