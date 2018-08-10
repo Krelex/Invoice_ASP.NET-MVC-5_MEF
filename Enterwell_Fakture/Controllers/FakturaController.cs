@@ -37,7 +37,6 @@ namespace Enterwell_Fakture.Controllers
             }
             else if(btn == "Kreiraj fakturu")
             {
-                //faktura.PayDate = DateTime.Now;
                 _db.Fakture.Add(faktura);
                 _db.SaveChanges();
                 return RedirectToAction("Index");

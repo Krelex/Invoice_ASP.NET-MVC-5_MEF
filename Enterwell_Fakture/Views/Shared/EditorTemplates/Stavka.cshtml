@@ -6,13 +6,13 @@
 
   <tr>
     <td>
-        @Html.EditorFor(model => model.Opis , new { @readonly = "readonly" })
+        @Html.EditorFor(model => model.Opis , new { htmlAttributes = new { @readonly = "readonly" } })
     </td>
     <td>
-        @Html.EditorFor(model => model.Cijena, new { @readonly = "readonly" })
+        @Html.EditorFor(model => model.Cijena, new { htmlAttributes = new { @readonly = "readonly" } })
     </td>
     <td>
-        @Html.EditorFor(model => model.Kolicina, new { @readonly = "readonly" }) 
+        @Html.EditorFor(model => model.Kolicina, new { htmlAttributes = new { @readonly = "readonly" } }) 
     </td>
     <td>
         @Model.UkupnaCijena().ToString("C2")
