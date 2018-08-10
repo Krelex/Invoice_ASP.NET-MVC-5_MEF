@@ -1,0 +1,22 @@
+﻿@model Enterwell_Fakture.Models.Infrastructure.Stavka
+
+@{
+    Layout = null;
+}
+
+  <tr>
+    <td>
+        @Html.EditorFor(model => model.Opis , new { @readonly = "readonly" })
+    </td>
+    <td>
+        @Html.EditorFor(model => model.Cijena, new { @readonly = "readonly" })
+    </td>
+    <td>
+        @Html.EditorFor(model => model.Kolicina, new { @readonly = "readonly" }) 
+    </td>
+    <td>
+        @Model.UkupnaCijena().ToString("C2")
+    </td>
+</tr>
+
+

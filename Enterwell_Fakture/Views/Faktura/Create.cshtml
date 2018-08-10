@@ -17,7 +17,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CreateDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CreateDate, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="text" name="CreateDate" value="@DateTime.Now.ToShortDateString()" readonly="readonly" class="form-control"/>
                 @Html.ValidationMessageFor(model => model.CreateDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -25,7 +25,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PayDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PayDate, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="text" name="CreateDate" value="@DateTime.Now.AddDays(30).ToShortDateString()"  class="form-control" />
                 @Html.ValidationMessageFor(model => model.PayDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -67,39 +67,29 @@
                 <tbody>
                     @if (Model.Stavke.Count != 0)
                     {
-                        foreach (var stavka in Model.Stavke)
+                        for(int i=0; i < Model.Stavke.Count; i++)
                         {
-                        <tr>
-                            <td>
-                                @stavka.Opis
-                            </td>
-                            <td>
-                                @stavka.Cijena.ToString("C2")
-                            </td>
-                            <td>
-                                @stavka.Kolicina.ToString("#.##")
-                            </td>
-                            <td>
-                                @stavka.UkupnaCijena().ToString("C2")
-                            </td>
-                        </tr>
+                            @Html.EditorFor(x => x.Stavke[i], "Stavka")
                         }
                     }
                     else
                     {
-                       <tr>
+                       <tr class="text-center">
                             <td colspan="4">Nema dodadnih stavki</td>
                        </tr>
                     }
                     <tr>
                         <td>
                             <input type="text" name="Opis" />
+                            @Html.ValidationMessage("Opis", "", new { @class = "text-danger" })
                         </td>
                         <td>
                             <input type="text" name="Cijena" />
+                            @Html.ValidationMessage("Cijena", "", new { @class = "text-danger" })
                         </td>
                         <td>
                             <input type="text" name="Kolicina" />
+                            @Html.ValidationMessage("Kolicina", "", new { @class = "text-danger" })
                         </td>
                         <td>
                             <input type="submit" name="btn" value="Dodaj stavku +" class="btn btn-default" />

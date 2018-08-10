@@ -274,6 +274,7 @@
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\Faktura\Index.cshtml" />
     <Content Include="Views\Faktura\Create.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Stavka.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

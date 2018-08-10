@@ -29,15 +29,22 @@ namespace Enterwell_Fakture.Controllers
         [HttpPost]
         public ActionResult Create(Faktura faktura , Stavka stavka,  string btn )
         {
-            if (btn != null)
+            if (btn == "Dodaj stavku +")
             {
-                faktura.Stavke.Add(stavka);
+                if((stavka.Opis != null) && (stavka.Cijena != 0) && (stavka.Kolicina != 0)) faktura.Stavke.Add(stavka);
+
                 return View("Create" , faktura);
+            }
+            else if(btn == "Dodaj stavku +")
+            {
+                faktura.CreateDate = DateTime.Now;
+                _db.Fakture.Add(faktura);
+                _db.SaveChanges();
+                return RedirectToAction("Kreiraj fakturu");
             }
             else
             {
-                return RedirectToAction("index");
-
+                return RedirectToAction("Index");
             }
         }
     }
