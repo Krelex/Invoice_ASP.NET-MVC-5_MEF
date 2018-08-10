@@ -35,12 +35,12 @@ namespace Enterwell_Fakture.Controllers
 
                 return View("Create" , faktura);
             }
-            else if(btn == "Dodaj stavku +")
+            else if(btn == "Kreiraj fakturu")
             {
-                faktura.CreateDate = DateTime.Now;
+                //faktura.PayDate = DateTime.Now;
                 _db.Fakture.Add(faktura);
                 _db.SaveChanges();
-                return RedirectToAction("Kreiraj fakturu");
+                return RedirectToAction("Index");
             }
             else
             {
