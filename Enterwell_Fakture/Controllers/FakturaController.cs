@@ -37,10 +37,16 @@ namespace Enterwell_Fakture.Controllers
             }
             else if(btn == "Kreiraj fakturu")
             {
-                _db.Fakture.Add(faktura);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
+                if (faktura.Kupac != null && faktura.Prodavac != null && faktura.Stavke.Count != 0)
+                {
+                    _db.Fakture.Add(faktura);
+                    _db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+                return View("Create" , faktura);
             }
+
             else
             {
                 return RedirectToAction("Index");
