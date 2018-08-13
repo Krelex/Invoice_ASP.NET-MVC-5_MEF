@@ -29,6 +29,8 @@ namespace Enterwell_Fakture.Models
         [Required]
         public string Prodavac { get; set; }
 
+        public double CijenaPDV { get; set; }
+
         public virtual List<Stavka> Stavke { get; set; }
 
         public decimal CijenaBezPdv()
