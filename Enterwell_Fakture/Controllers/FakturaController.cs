@@ -79,5 +79,16 @@ namespace Enterwell_Fakture.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+        [HttpPost]
+        public ActionResult Delete(Faktura faktura)
+        {
+            var RemoveObj = _db.Fakture.Where(f => f.FakturaId == faktura.FakturaId).Single();
+            _db.Fakture.Remove(RemoveObj);
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
+
+        }
     }
 }

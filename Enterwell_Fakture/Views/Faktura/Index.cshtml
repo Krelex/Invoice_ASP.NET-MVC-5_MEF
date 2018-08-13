@@ -10,7 +10,7 @@
     @Html.ActionLink("Dodaj novu fakturu", "Create")
 </p>
 <table class="table">
-    <tr>
+    <tr >
         <th>
             Datum izdavanja
         </th>
@@ -26,6 +26,7 @@
         <th class="text-center">Stavke</th>
         <th>Cijena bez PDV-a</th>
         <th>Cijena sa PDV-om</th>
+        <th class="text-center"> # </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -86,6 +87,13 @@
         </td>
         <td>
             @item.CijenaPDV.ToString("C2")
+        </td>
+        <td>
+            @using (Html.BeginForm("Delete","Faktura"))
+            {
+                <input type="hidden" name="FakturaId" value="@item.FakturaId" />
+                <input type="submit" value="Delete" class="btn btn-danger"/> 
+            }
         </td>
     </tr>
 }

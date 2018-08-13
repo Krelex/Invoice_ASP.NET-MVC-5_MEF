@@ -42,10 +42,5 @@ namespace Enterwell_Fakture.Models
             }
             return ukupno;
         }
-
-        //public decimal CijenaPdv()
-        //{
-            
-        //}
     }
 }
