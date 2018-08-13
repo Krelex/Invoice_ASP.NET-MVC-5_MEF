@@ -18,7 +18,8 @@ namespace Enterwell_Fakture.Controllers
         static MEFControllerFactory()
         {
             var catalog = new AggregateCatalog();
-            catalog.Catalogs.Add(new DirectoryCatalog("C:\\Users\\andre\\Desktop\\Project\\ASP.NET_MVC_Filip_Cogelja\\Aplikacija\\EnterwellFakture.MVC\\Enterwell_Fakture\\Extensions"));   
+            var path = AppDomain.CurrentDomain.BaseDirectory;
+            catalog.Catalogs.Add(new DirectoryCatalog(path+"Extensions"));   
             
 
             _container = new CompositionContainer(catalog);
