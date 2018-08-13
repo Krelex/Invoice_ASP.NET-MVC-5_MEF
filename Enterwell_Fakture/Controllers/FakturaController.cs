@@ -50,11 +50,8 @@ namespace Enterwell_Fakture.Controllers
             {
                 if (faktura.Kupac != null && faktura.Prodavac != null && faktura.Stavke.Count != 0)
                 {
-                    foreach (var item in _taxes)
-                    {
-                        if (item.Metadata.Symbol.Equals(Drzava)) faktura.CijenaPDV = item.Value.Calculation((double)faktura.CijenaBezPdv()); 
-                    }
-
+                    foreach (var item in _taxes) if (item.Metadata.Symbol.Equals(Drzava)) faktura.CijenaPDV = item.Value.Calculation((double)faktura.CijenaBezPdv()); 
+                    
                     _db.Fakture.Add(faktura);
                     _db.SaveChanges();
 
@@ -63,10 +60,7 @@ namespace Enterwell_Fakture.Controllers
 
                 return View("Create" , faktura);
             }
-            else
-            {
-                return RedirectToAction("Index");
-            }
+            else return RedirectToAction("Index");
         }
 
         [HttpPost]
