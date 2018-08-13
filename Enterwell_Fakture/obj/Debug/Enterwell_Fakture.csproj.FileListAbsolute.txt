@@ -79,4 +79,3 @@ C:\Users\andre\Desktop\Project\ASP.NET_MVC_Filip_Cogelja\Aplikacija\EnterwellFak
 C:\Users\andre\Desktop\Project\ASP.NET_MVC_Filip_Cogelja\Aplikacija\EnterwellFakture.MVC\Enterwell_Fakture\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\andre\Desktop\Project\ASP.NET_MVC_Filip_Cogelja\Aplikacija\EnterwellFakture.MVC\Enterwell_Fakture\obj\Debug\Enterwell_Fakture.dll
 C:\Users\andre\Desktop\Project\ASP.NET_MVC_Filip_Cogelja\Aplikacija\EnterwellFakture.MVC\Enterwell_Fakture\obj\Debug\Enterwell_Fakture.pdb
-C:\Users\andre\Desktop\Project\ASP.NET_MVC_Filip_Cogelja\Aplikacija\EnterwellFakture.MVC\Enterwell_Fakture\obj\Debug\Enterwell_Fakture.csprojResolveAssemblyReference.cache
