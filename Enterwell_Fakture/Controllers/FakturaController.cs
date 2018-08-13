@@ -19,9 +19,6 @@ namespace Enterwell_Fakture.Controllers
         [ImportMany]
         IEnumerable<Lazy<IPluginOperation, ICountryName>> _taxes;
 
-        List<string> popis = new List<string>();
-
-
     // GET: Faktura
     public ActionResult Index()
         {
@@ -32,12 +29,8 @@ namespace Enterwell_Fakture.Controllers
 
         public ActionResult Create()
         {
-            foreach (var item in _taxes)
-            {
-                popis.Add(item.Metadata.Symbol);
-            }
 
-            ViewBag.Drzave = popis;
+            ViewBag.Drzave = GetTaxes(_taxes);
 
             return View( new  Faktura() );
         }
@@ -45,12 +38,7 @@ namespace Enterwell_Fakture.Controllers
         [HttpPost]
         public ActionResult Create(Faktura faktura , Stavka stavka,  string btn, string Drzava )
         {
-            foreach (var item in _taxes)
-            {
-                popis.Add(item.Metadata.Symbol);
-            }
-
-            ViewBag.Drzave = popis;
+            ViewBag.Drzave = GetTaxes(_taxes);
 
             if (btn == "Dodaj stavku +")
             {
@@ -90,6 +78,20 @@ namespace Enterwell_Fakture.Controllers
 
             return RedirectToAction("Index");
 
+        }
+
+
+        private static List<string> GetTaxes(IEnumerable<Lazy<IPluginOperation, ICountryName>> taxes)
+        {
+            List<string> popis = new List<string>();
+            foreach (var item in taxes) addItemToList(popis, item.Metadata.Symbol);
+
+            return popis;
+        }
+
+        private static void addItemToList(List<string> popis , string item )
+        {
+            popis.Add(item);
         }
     }
 }
