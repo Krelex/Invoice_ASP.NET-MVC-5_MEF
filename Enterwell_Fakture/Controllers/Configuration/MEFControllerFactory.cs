@@ -10,6 +10,7 @@ using System.ComponentModel.Composition;
 
 namespace Enterwell_Fakture.Controllers
 {
+    [HandleError]
     public class MEFControllerFactory : DefaultControllerFactory
     {
         static CompositionContainer _container;
@@ -24,9 +25,10 @@ namespace Enterwell_Fakture.Controllers
             
         }
 
-
+        [HandleError]
         public override IController CreateController(RequestContext requestContext, string controllerName)
         {
+            
             var controller = base.CreateController(requestContext, controllerName);
 
             _container.ComposeParts(controller);

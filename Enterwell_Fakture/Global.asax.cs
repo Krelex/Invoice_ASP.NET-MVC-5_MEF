@@ -19,5 +19,13 @@ namespace Enterwell_Fakture
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        protected void Application_Error()
+        {
+            Exception exception = Server.GetLastError();
+            Server.ClearError();
+
+            Response.Redirect("~/GlobalError/Index");
+        }
     }
 }

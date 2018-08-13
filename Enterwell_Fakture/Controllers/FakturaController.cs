@@ -11,6 +11,7 @@ using System.Web.Mvc;
 namespace Enterwell_Fakture.Controllers
 {
     [Authorize]
+    [HandleError]
     public class FakturaController : Controller
     {
         FakturaDbContex _db = new FakturaDbContex();
